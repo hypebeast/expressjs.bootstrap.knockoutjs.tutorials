@@ -1,0 +1,23 @@
+doctype 5
+html
+  include includes/header
+
+  body
+    div.navbar.navbar-fixed-top
+      div.navbar-inner
+        div.container
+          a(href='/').brand #{title}
+          ul.nav
+            li
+              a(href='/') Main 
+            li
+              a(href='#') Playlists
+            li
+              a(href='about') About
+
+    div.container
+      block content
+
+      include includes/footer
+
+    include includes/scripts
