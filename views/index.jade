@@ -1,5 +1,13 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div.page-header
+    h1 Tutorials
+
+  div.row
+    div.span2
+      a(href='/tutorial1') Tutorial 1
+    div.span10 Introduction
+    div.span2
+      a(href='/tutorial2') Tutorial 2
+    div.span10 Working with Lists and Collections
