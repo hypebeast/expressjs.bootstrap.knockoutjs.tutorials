@@ -16,5 +16,8 @@ block content
         input(data-bind="value: firstName")
       p Last Name: 
         input(data-bind="value: lastName")
-      button(data-bind="click: capitalizeLastName") Go caps
+      button(data-bind="click: capitalizeLastName").btn Go caps
+
+block scripts
+  script(type='text/javascript', src='/javascripts/tutorial1/tutorial1.js')
 

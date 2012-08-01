@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  div.page-header
+    h1= title
+
+  div.row
+    div.span12
+      h2 Your seat reservations (
+        span(data-bind="text: seats().length") ")"
+
+      table.table
+        thead
+          tr
+            th Passenger name
+            th Meal
+            th Surcharge
+        tbody(data-bind="foreach: seats")
+          tr
+            td(data-bind="text: name")
+            td
+              select(data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'")
+            td(data-bind="text: formattedPrice")
+            td
+              a(data-bind="click: $root.removeSeat") Remove
+
+      button(data-bind="click: $root.addSeat, enable: seats().length < 8").btn Reserve another seat
+
+      h3(data-bind="visible: totalSurcharge() > 0") Total surcharge $
+        span(data-bind="text: totalSurcharge().toFixed(2)")
+
+block scripts
+  script(type='text/javascript', src='/javascripts/tutorial2/tutorial2.js')
