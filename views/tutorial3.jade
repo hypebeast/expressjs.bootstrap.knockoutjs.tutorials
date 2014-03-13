@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  div.page-header
+    h1= title
+
+  div.row
+    div.span12
+      div.navbar
+        div.navbar-inner
+          div.container
+            ul(data-bind="foreach: folders").nav
+              li(data-bind="css: { active: $data == $root.chosenFolderId() }")
+                a(data-bind="text: $data, click: $root.goToFolder")
+
+      table(data-bind="with: chosenFolderData").table
+        thead
+          tr
+            th From
+            th To
+            th Subject
+            th Date
+        tbody(data-bind="foreach: mails")
+          tr
+            td(data-bind="text: from")
+            td(data-bind="text: to")
+            td(data-bind="text: subject")
+            td(data-bind="text: date")
+
+block scripts
+  script(type='text/javascript', src='/javascripts/tutorial3/tutorial3.js')

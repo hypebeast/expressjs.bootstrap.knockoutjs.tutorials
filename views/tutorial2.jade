@@ -1,31 +1,36 @@
 extends layout
 
 block content
-  div.page-header
+  .page-header
     h1= title
 
-  div.row
-    div.span12
+  .row
+    .col-md-12
       h2 Your seat reservations (
-        span(data-bind="text: seats().length") ")"
-
-      table.table
+        span(data-bind="text: seats().length")
+        span )
+  .row
+    .col-md-12
+      table.table.table-striped
         thead
           tr
-            th Passenger name
+            th Passenger Name
             th Meal
             th Surcharge
         tbody(data-bind="foreach: seats")
           tr
-            td(data-bind="text: name")
+            td
+              input(data-bind="value: name")
             td
               select(data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'")
             td(data-bind="text: formattedPrice")
             td
               a(data-bind="click: $root.removeSeat") Remove
-
-      button(data-bind="click: $root.addSeat, enable: seats().length < 8").btn Reserve another seat
-
+  .row
+    .col-md-12
+      button.btn.btn-primary(type="button", data-bind="click: $root.addSeat, enable: seats().length < 8").btn Reserve another seat
+  .row
+    .col-md-12
       h3(data-bind="visible: totalSurcharge() > 0") Total surcharge $
         span(data-bind="text: totalSurcharge().toFixed(2)")
 

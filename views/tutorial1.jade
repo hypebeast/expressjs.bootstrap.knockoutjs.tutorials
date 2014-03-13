@@ -1,23 +1,37 @@
 extends layout
 
 block content
-  div.page-header
+  .page-header
     h1= title
 
-  div.row
-    div.span12
-      p First name: 
-        strong(data-bind="text: firstName")
-      p Last name: 
-        strong(data-bind="text: lastName")
-      p Full name: 
-        strong(data-bind="text: fullName")
-      p First Name: 
-        input(data-bind="value: firstName")
-      p Last Name: 
-        input(data-bind="value: lastName")
-      button(data-bind="click: capitalizeLastName").btn Go caps
+  .row
+    .col-md-2
+      p First name:
+    .col-md-10
+      strong(data-bind="text: firstName")
+  .row
+    .col-md-2
+      p Last name:
+    .col-md-10
+      strong(data-bind="text: lastName")
+  .row
+    .col-md-2
+      p Full name:
+    .col-md-10
+      strong(data-bind="text: fullName")
+  .row
+    .col-md-2
+      p First Name:
+    .col-md-10
+      input(data-bind="value: firstName")
+  .row
+    .col-md-2
+      p Last Name:
+    .col-md-10
+      input(data-bind="value: lastName")
+  .row
+    .col-md-12
+      button.btn.btn-primary(type="button", data-bind="click: capitalizeLastName").btn Go caps
 
 block scripts
   script(type='text/javascript', src='/javascripts/tutorial1/tutorial1.js')
-
