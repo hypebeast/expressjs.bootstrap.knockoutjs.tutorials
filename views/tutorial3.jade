@@ -1,19 +1,17 @@
 extends layout
 
 block content
-  div.page-header
+  .page-header
     h1= title
 
-  div.row
-    div.span12
-      div.navbar
-        div.navbar-inner
-          div.container
-            ul(data-bind="foreach: folders").nav
-              li(data-bind="css: { active: $data == $root.chosenFolderId() }")
-                a(data-bind="text: $data, click: $root.goToFolder")
+  .row
+    .col-md-12
+      ul(data-bind="foreach: folders").folders
+        li(data-bind="text: $data, css: { selected: $data == $root.chosenFolderId() }, click: $root.goToFolder")
 
-      table(data-bind="with: chosenFolderData").table
+  .row
+    .col-md-12
+      table(data-bind="with: chosenFolderData").table.mails
         thead
           tr
             th From
@@ -21,11 +19,26 @@ block content
             th Subject
             th Date
         tbody(data-bind="foreach: mails")
-          tr
+          tr(data-bind="click: $root.goToMail")
             td(data-bind="text: from")
             td(data-bind="text: to")
             td(data-bind="text: subject")
             td(data-bind="text: date")
 
+      .viewMail(data-bind="with: chosenMailData")
+        .mailInfo
+          h1(data-bind="text: subject")
+          p
+            label From&nbsp
+            span(data-bind="text: from")
+          p
+            label To&nbsp
+            span(data-bind="text: to")
+          p
+            label Date&nbsp
+            span(data-bind="text: date")
+        p(data-bind="html: messageContent").message
+
 block scripts
+  script(type="text/javascript", src="/javascripts/sammy-0.7.5.min.js")
   script(type='text/javascript', src='/javascripts/tutorial3/tutorial3.js')

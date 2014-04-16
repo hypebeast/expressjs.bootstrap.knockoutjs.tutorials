@@ -14,8 +14,6 @@ $(document).ready(function() {
   function ReservationsViewModel() {
     var self = this;
 
-    console.log('fuck');
-
     // Non-editable catalog data - would come from the server
     self.availableMeals = [
         { mealName: "Standard (sandwich)", price: 0 },
@@ -46,6 +44,5 @@ $(document).ready(function() {
     });
   }
 
-  console.log('jdskljfd');
   ko.applyBindings(new ReservationsViewModel());
 });
